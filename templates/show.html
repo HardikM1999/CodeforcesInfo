@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block body %}
+    <section class="hero is-primary is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1 has-text-black">Codeforces User Info</h1>
+                <h2 class="subtitle">Using Codeforces Api</h2>
+            </div>
+        </div>
+    </section>
+    {% for user in user_data %}
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content username">
+                        <form method="POST">
+                            <div class="field">
+                                <label class="label">Username:</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Enter Codeforces username" name="username" value="{{user.handle}}"></input>
+                                </div>
+                            </div>
+                            <div class="has-text-centered">
+                                <input class="button is-link" name="get-info" type="submit" value="Get Info">
+                            </div>
+                            <div class="field">
+                                <label class="label">Email id:</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Enter mail id" name="email-id" value="">
+                                </div>
+                            </div>
+                            <div class="has-text-centered">
+                                <input class="button is-link" name="get-mail" type="submit" value="Get Mail">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content user-handle">
+                        <label class="label">User Handle:</label>
+                        {{user['handle']}}
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content user-handle">
+                        <label class="label">User Rating:</label>
+                        {{user['rating']}}
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content user-handle">
+                        <label class="label">User Rank:</label>
+                        {{user['rank']}}
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content user-handle">
+                        <label class="label">User Image:</label>
+                        <img src="{{user['avatar']}}">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content user-handle">
+                        <label class="label">User City:</label>
+                        {{user['city']}}
+                        <label class="label">User Country:</label>
+                        {{user['country']}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content contest-details">
+                        <div class="title is-4 has-text-centered">
+                            Upcoming Contest
+                        </div>
+                        <label class="label">Contest name:</label>
+                        {{contest_data['name']}}
+                        <label class="label">Contest Starts In:</label>
+                        {{contest_time}}
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+            </div>
+        </div>
+    </section>
+{% endblock %}
